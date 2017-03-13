@@ -57,58 +57,58 @@ SCHEDULER.every '5s', :first_in => 0 do |job|
 
   ### Events
   send_event('icinga-host-meter', {
-   value: host_meter,
-   max:   host_meter_max,
-   moreinfo: "Total hosts: " + host_meter_max.to_s,
-   color: 'blue' })
+   :value => host_meter,
+   :max =>   host_meter_max,
+   :moreinfo => "Total hosts: " + host_meter_max.to_s,
+   :color => 'blue' })
 
   send_event('icinga-service-meter', {
-   value: service_meter,
-   max:   service_meter_max,
-   moreinfo: "Total services: " + service_meter_max.to_s,
-   color: 'blue' })
+   :value => service_meter,
+   :max =>   service_meter_max,
+   :moreinfo => "Total services: " + service_meter_max.to_s,
+   :color => 'blue' })
 
   send_event('icinga-checks', {
-   items: check_stats,
-   moreinfo: "Avg latency: " + icinga.avg_latency.to_s + "s",
-   color: 'blue' })
+   :items => check_stats,
+   :moreinfo => "Avg latency: " + icinga.avg_latency.to_s + "s",
+   :color => 'blue' })
 
   send_event('icinga-severity', {
-   items: severity_stats,
-   color: 'blue' })
+   :items => severity_stats,
+   :color => 'blue' })
 
   # down, critical, warning, unknown
   send_event('icinga-host-down', {
-   value: icinga.host_count_down.to_s,
-   color: 'red' })
+   :value => icinga.host_count_down.to_s,
+   :color => 'red' })
 
   send_event('icinga-service-critical', {
-   value: icinga.service_count_critical.to_s,
-   color: 'red' })
+   :value => icinga.service_count_critical.to_s,
+   :color => 'red' })
 
   send_event('icinga-service-warning', {
-   value: icinga.service_count_warning.to_s,
-   color: 'yellow' })
+   :value => icinga.service_count_warning.to_s,
+   :color => 'yellow' })
 
   send_event('icinga-service-unknown', {
-   value: icinga.service_count_unknown.to_s,
-   color: 'purple' })
+   :value => icinga.service_count_unknown.to_s,
+   :color => 'purple' })
 
   # ack, downtime
   send_event('icinga-service-ack', {
-   value: icinga.service_count_acknowledged.to_s,
-   color: 'blue' })
+   :value => icinga.service_count_acknowledged.to_s,
+   :color => 'blue' })
 
   send_event('icinga-host-ack', {
-   value: icinga.host_count_acknowledged.to_s,
-   color: 'blue' })
+   :value => icinga.host_count_acknowledged.to_s,
+   :color => 'blue' })
 
   send_event('icinga-service-downtime', {
-   value: icinga.service_count_in_downtime.to_s,
-   color: 'orange' })
+   :value => icinga.service_count_in_downtime.to_s,
+   :color => 'orange' })
 
   send_event('icinga-host-downtime', {
-   value: icinga.host_count_in_downtime.to_s,
-   color: 'orange' })
+   :value => icinga.host_count_in_downtime.to_s,
+   :color => 'orange' })
 end
 
